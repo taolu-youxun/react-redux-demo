@@ -1,4 +1,7 @@
-const createStore = function (reducer) {
+const createStore = function (reducer,heightener) {
+  if (heightener) {        
+    return heightener(createStore)(reducer)    
+}  
   let currentState = {}
   let observers = []  
   const getState = () => {
